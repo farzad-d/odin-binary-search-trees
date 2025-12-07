@@ -16,5 +16,8 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 const sampleArray = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 const tree = new Tree(sampleArray);
 
+tree.insert(20);
+tree.insert(21);
+// tree.rebalance();
+
 prettyPrint(tree.root);
-// console.log(tree.root);
