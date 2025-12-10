@@ -57,6 +57,70 @@ class Tree {
       console.log("Value already exists.");
     }
   }
+
+  find(value, currNode = this.root) {
+    if (!currNode) return null;
+    if (value === currNode.data) return currNode;
+
+    return value < currNode.data
+      ? this.find(value, currNode.left)
+      : this.find(value, currNode.right);
+  }
+
+  findNodeWithParent(value, currNode = this.root, parent = null) {
+    if (!currNode) return null;
+    if (value === currNode.data) return { node: currNode, parent };
+
+    return value < currNode.data
+      ? this.findNodeWithParent(value, currNode.left, currNode)
+      : this.findNodeWithParent(value, currNode.right, currNode);
+  }
+
+  deleteItem(value) {
+    const target = this.findNodeWithParent(value);
+    if (!target) return;
+
+    const node = target.node;
+    const parent = target.parent;
+
+    const getSuccessor = () => {
+      if (node.left && !node.right) return node.left;
+      if (!node.left && node.right) return node.right;
+
+      if (node.left && node.right) {
+        let currNode = node.right;
+        let prevNode = node;
+
+        while (currNode.left) {
+          prevNode = currNode;
+          currNode = currNode.left;
+        }
+
+        prevNode === node.right
+          ? (prevNode.left = currNode.right)
+          : (node.right = currNode.right);
+        currNode.right = node.right;
+        currNode.left = node.left;
+
+        return currNode;
+      }
+
+      return null;
+    };
+
+    const linkParentToSuccessor = (successor) => {
+      if (!parent) {
+        this.root = successor;
+        return;
+      }
+
+      node.data < parent.data
+        ? (parent.left = successor)
+        : (parent.right = successor);
+    };
+
+    linkParentToSuccessor(getSuccessor());
+  }
 }
 
 export { Tree };
