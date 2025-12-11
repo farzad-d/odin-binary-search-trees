@@ -121,6 +121,21 @@ class Tree {
 
     linkParentToSuccessor(getSuccessor());
   }
+
+  levelOrderForEach(callback) {
+    if (!callback) throw new Error("A callback function is required.");
+    if (!this.root) return this;
+
+    const q = [this.root];
+
+    for (const node of q) {
+      if (node.left) q.push(node.left);
+      if (node.right) q.push(node.right);
+      callback(node);
+    }
+
+    return this;
+  }
 }
 
 export { Tree };
