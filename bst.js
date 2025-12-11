@@ -136,6 +136,20 @@ class Tree {
 
     return this;
   }
+
+  // Recursive version
+  /*   levelOrderForEach(callback, q = [this.root], i = 0) {
+    if (!callback) throw new Error("A callback function is required.");
+    if (!q[0]) return this;
+    if (i === q.length) return this;
+
+    const node = q[i];
+    callback(node);
+
+    if (node.left) q.push(node.left);
+    if (node.right) q.push(node.right);
+    return this.levelOrderForEach(callback, q, i + 1);
+  } */
 }
 
 export { Tree };
