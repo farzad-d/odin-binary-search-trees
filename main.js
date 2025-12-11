@@ -22,5 +22,9 @@ const tree = new Tree(sampleArray);
 // tree.rebalance();
 // console.log(tree.find(9));
 // tree.deleteItem(324);
-tree.levelOrderForEach((n) => (n.data *= 2));
+// tree.levelOrderForEach((n) => (n.data *= 2));
+// tree.inOrderForEach((n) => (n.data *= 2));
+// tree.preOrderForEach((n) => (n.data *= 2));
+// tree.postOrderForEach((n) => (n.data *= 2));
+
 prettyPrint(tree.root);
