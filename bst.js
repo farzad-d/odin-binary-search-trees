@@ -183,6 +183,17 @@ class Tree {
 
     return this;
   }
+
+  height(value) {
+    const node = this.find(value);
+    if (!node) return "Value not found.";
+    return this._height(node);
+  }
+
+  _height(node) {
+    if (!node) return -1;
+    return 1 + Math.max(this._height(node.left), this._height(node.right));
+  }
 }
 
 export { Tree };

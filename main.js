@@ -13,12 +13,10 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
   }
 };
 
-// const sampleArray = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
-const sampleArray = [6, 5, 1, 2, 3, 4];
+const sampleArray = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 const tree = new Tree(sampleArray);
 
 // tree.insert(320);
-// tree.insert(321);
 // tree.rebalance();
 // console.log(tree.find(9));
 // tree.deleteItem(324);
@@ -26,5 +24,6 @@ const tree = new Tree(sampleArray);
 // tree.inOrderForEach((n) => (n.data *= 2));
 // tree.preOrderForEach((n) => (n.data *= 2));
 // tree.postOrderForEach((n) => (n.data *= 2));
+// console.log(tree.height(4));
 
 prettyPrint(tree.root);
