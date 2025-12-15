@@ -186,13 +186,30 @@ class Tree {
 
   height(value) {
     const node = this.find(value);
-    if (!node) return "Value not found.";
+    if (!node) return null;
     return this._height(node);
   }
 
   _height(node) {
     if (!node) return -1;
     return 1 + Math.max(this._height(node.left), this._height(node.right));
+  }
+
+  depth(value) {
+    const d = this._depth(value, this.root);
+    return d === -1 ? null : d;
+  }
+
+  _depth(value, node) {
+    if (!node) return -1;
+    if (value === node.data) return 0;
+
+    const next = value < node.data ? node.left : node.right;
+    const subDepth = this._depth(value, next);
+
+    // If the value wasn't found in this subtree, bubble up -1,
+    // otherwise add 1 to count the edge while unwinding recursion
+    return subDepth === -1 ? -1 : subDepth + 1;
   }
 }
 

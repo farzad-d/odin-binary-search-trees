@@ -25,5 +25,6 @@ const tree = new Tree(sampleArray);
 // tree.preOrderForEach((n) => (n.data *= 2));
 // tree.postOrderForEach((n) => (n.data *= 2));
 // console.log(tree.height(4));
+// console.log(tree.depth(5));
 
 prettyPrint(tree.root);
