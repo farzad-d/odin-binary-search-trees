@@ -24,7 +24,8 @@ const tree = new Tree(sampleArray);
 // tree.inOrderForEach((n) => (n.data *= 2));
 // tree.preOrderForEach((n) => (n.data *= 2));
 // tree.postOrderForEach((n) => (n.data *= 2));
-// console.log(tree.height(4));
+// console.log(tree.height(8));
 // console.log(tree.depth(5));
+// console.log(tree.isBalanced());
 
 prettyPrint(tree.root);

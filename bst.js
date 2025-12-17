@@ -24,6 +24,23 @@ class Tree {
     return node;
   }
 
+  checkBalance(node) {
+    if (!node) return 0;
+
+    const leftHeight = this.checkBalance(node.left);
+    if (leftHeight === -1) return -1;
+
+    const rightHeight = this.checkBalance(node.right);
+    if (rightHeight === -1) return -1;
+
+    if (Math.abs(leftHeight - rightHeight) > 1) return -1;
+    return 1 + Math.max(leftHeight, rightHeight);
+  }
+
+  isBalanced(node = this.root) {
+    return this.checkBalance(node) !== -1;
+  }
+
   inOrder(node = this.root, result = []) {
     if (!node) return result;
 
