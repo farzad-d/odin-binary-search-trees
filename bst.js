@@ -27,12 +27,18 @@ class Tree {
   checkBalance(node) {
     if (!node) return 0;
 
-    const leftHeight = this.checkBalance(node.left);
-    if (leftHeight === -1) return -1;
+    // A: Recursively check the left subtree and get its height
+    // B: If the left subtree is already unbalanced, it returns -1,
+    // we immediately propagate this -1 upwards to signal that the tree
+    // is unbalanced, so no further checks are needed for this branch
+    const leftHeight = this.checkBalance(node.left); // <--- A
+    if (leftHeight === -1) return -1; // <--- B
 
-    const rightHeight = this.checkBalance(node.right);
-    if (rightHeight === -1) return -1;
+    const rightHeight = this.checkBalance(node.right); // <--- A
+    if (rightHeight === -1) return -1; // <--- B
 
+    // If the current node is unbalanced (height difference > 1), return -1;
+    // otherwise, return this node's height
     if (Math.abs(leftHeight - rightHeight) > 1) return -1;
     return 1 + Math.max(leftHeight, rightHeight);
   }
